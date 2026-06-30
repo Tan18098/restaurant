@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Haven - Premium Interactive Menu Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-orange-50 flex flex-col min-h-screen font-sans text-gray-800 relative">
+
+    <div class="bg-red-955 text-white text-xs font-bold py-2.5 px-4 text-center tracking-widest uppercase shadow-sm">
+        🇲🇾 Pork-Free & Alcohol-Free Premium Dining | Muslim-Friendly Experience
+    </div>
+
+    <nav class="bg-white shadow-md w-full sticky top-0 z-50 border-b-4 border-orange-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center py-4">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-stone-900 text-white flex items-center justify-center rounded-full font-bold text-xl group-hover:bg-orange-600 transition shadow-md">F&B</div>
+                <span class="text-2xl font-black text-red-950 tracking-tight">Foodie Haven</span>
+            </a>
+            <div class="flex flex-wrap gap-5 text-sm font-bold mt-4 md:mt-0">
+                <a href="index.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-orange-500 transition pb-1">About Us</a>
+                <a href="menu.html" class="text-orange-600 border-b-2 border-orange-600 pb-1">Menu</a>
+                <a href="outlets.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Outlets</a>
+                <a href="contact.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Contact Us</a>
+                <a href="csr.html" class="text-gray-600 hover:text-orange-500 transition pb-1">CSR</a>
+                <a href="team.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Our Team</a>
+                <a href="awards.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Awards</a>
+                <a href="blog.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Blog Spot</a>
+                <a href="gallery.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-7xl">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-black text-red-900 tracking-tight uppercase">The Premium Menu Directory</h1>
+            <p class="text-xs font-bold text-green-800 bg-green-100 inline-block px-5 py-1.5 rounded-full border border-green-200 mt-3 tracking-wider uppercase">
+                ✓ System Audit: 100% Certified Halal-Sourced Farm Parameters
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto mb-10 flex flex-wrap justify-center items-center gap-2.5 bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
+            <button onclick="switchCategory('all')" id="tab-all" class="menu-tab px-4 py-2 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 bg-stone-900 text-white shadow-sm">All Masterpieces</button>
+            <button onclick="switchCategory('bakery')" id="tab-bakery" class="menu-tab px-4 py-2 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 bg-stone-50 text-stone-600 hover:bg-stone-100">🥐 Bakery & Eggs</button>
+            <button onclick="switchCategory('rice')" id="tab-rice" class="menu-tab px-4 py-2 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 bg-stone-50 text-stone-600 hover:bg-stone-100">🍛 Elite Rice Plates</button>
+            <button onclick="switchCategory('noodles')" id="tab-noodles" class="menu-tab px-4 py-2 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 bg-stone-50 text-stone-600 hover:bg-stone-100">🍜 Classic Noodles</button>
+            <button onclick="switchCategory('drinks')" id="tab-drinks" class="menu-tab px-4 py-2 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 bg-stone-50 text-stone-600 hover:bg-stone-100">☕ Drinks & Desserts</button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6" id="menuItemsContainer">
+                
+                <div class="menu-item-card bakery bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/egg-tart.jpg" alt="Egg Tart" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Grand 128-Layer Heritage Egg Tart</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Ultra-flaky artisan crust filled with rich egg custard.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT QUANTITY BUNDLE:</label>
+                            <select id="option-item-1" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="1 Piece|6">1 Piece — MYR 6</option>
+                                <option value="2 Pieces (Twin Pack)|12" selected>2 Pieces (Twin Pack) — MYR 12</option>
+                                <option value="6 Pieces (Family Box)|33">6 Pieces (Family Box) — MYR 33</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-1', 'Grand 128-Layer Heritage Egg Tart')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card bakery bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/polo-bun.jpg" alt="Polo Bun" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Elite Butter-Crusted Polo Bun</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Served warm with a thick slice of chilled French butter.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT QUANTITY BUNDLE:</label>
+                            <select id="option-item-2" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="1 Piece|9" selected>1 Piece — MYR 9</option>
+                                <option value="2 Pieces Bundle|17">2 Pieces Bundle — MYR 17</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-2', 'Elite Butter-Crusted Polo Bun')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card bakery bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/kaya-toast.jpg" alt="Kaya Toast" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Charcoal Kaya Toast & Omega Eggs Set</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Homemade pandan kaya paired with two soft-boiled eggs.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT SET SIZE:</label>
+                            <select id="option-item-3" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Standard Set (1-Pax)|10" selected>Standard Set (1-Pax) — MYR 10</option>
+                                <option value="Double Luxury Set (2-Pax)|19">Double Luxury Set (2-Pax) — MYR 19</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-3', 'Charcoal Kaya Toast Set')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card bakery bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/garlic-cheese-bun.jpg" alt="Garlic Cheese Bun" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Premium Roasted Garlic & Cheese Bun</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Baked brioche bun infused with garlic and mozzarella lines.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT QUANTITY BUNDLE:</label>
+                            <select id="option-item-4" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="1 Piece|8" selected>1 Piece — MYR 8</option>
+                                <option value="2 Pieces Pack|15">2 Pieces Pack — MYR 15</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-4', 'Premium Roasted Garlic Cheese Bun')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/nasi-lemak.jpg" alt="Nasi Lemak" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Signature Rempah Chicken Nasi Lemak</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Fragrant basmati coconut rice with overnight spiced fried chicken.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-5" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|22">Small Portion — MYR 22</option>
+                                <option value="Medium Portion|26" selected>Medium Portion — MYR 26</option>
+                                <option value="Large Portion|30">Large Portion — MYR 30</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-5', 'Signature Rempah Nasi Lemak')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/seafood-fried-rice.jpg" alt="Seafood Fried Rice" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Imperial Golden Seafood Fried Rice</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Wok-fried jasmine rice with crab meat and fresh prawns.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-6" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|20">Small Portion — MYR 20</option>
+                                <option value="Medium Portion|24" selected>Medium Portion — MYR 24</option>
+                                <option value="Large Portion|28">Large Portion — MYR 28</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-6', 'Imperial Golden Seafood Fried Rice')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/wagyu-rendang.jpg" alt="Wagyu Rendang" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Premium Wagyu Beef Rendang Rice Bowl</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Slow-braised Australian Wagyu chunks in rich local spice lines.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-7" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|34">Small Portion — MYR 34</option>
+                                <option value="Medium Portion|38" selected>Medium Portion — MYR 38</option>
+                                <option value="Large Portion|42">Large Portion — MYR 42</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-7', 'Wagyu Beef Rendang Rice Bowl')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/chicken-rice.jpg" alt="Chicken Rice" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Classic Hainanese Free-Range Chicken Rice</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Succulent poached free-range chicken with ginger-infused rice matrix.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-8" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|18">Small Portion — MYR 18</option>
+                                <option value="Medium Portion|22" selected>Medium Portion — MYR 22</option>
+                                <option value="Large Portion|26">Large Portion — MYR 26</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-8', 'Classic Hainanese Chicken Rice')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/truffle-rice.jpg" alt="Truffle Rice" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Slow-Simmered Wild Mushroom Truffle Rice</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Earthy mushrooms and Italian truffle paste over steamed pearl rice.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-9" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|21">Small Portion — MYR 21</option>
+                                <option value="Medium Portion|25" selected>Medium Portion — MYR 25</option>
+                                <option value="Large Portion|29">Large Portion — MY9 29</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-9', 'Wild Mushroom Truffle Rice')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card rice bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/claypot-chicken-rice.jpg" alt="Claypot Chicken Rice" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Superior Claypot Spiced Chicken Rice</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Traditional claypot rice with soy chicken and salted fish.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-10" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Portion|16">Small Portion — MYR 16</option>
+                                <option value="Medium Portion|20" selected>Medium Portion — MYR 20</option>
+                                <option value="Large Portion|24">Large Portion — MYR 24</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-10', 'Superior Claypot Spiced Chicken Rice')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card noodles bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/curry-noodles.jpg" alt="Curry Noodles" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Supreme Heritage Kampung Curry Noodles</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Rich coconut broth topped with poached chicken and premium tofu puffs.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-11" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl|18">Small Bowl — MYR 18</option>
+                                <option value="Medium Bowl|22" selected>Medium Bowl — MYR 22</option>
+                                <option value="Large Bowl|26">Large Bowl — MYR 26</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-11', 'Supreme Heritage Kampung Curry Noodles')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card noodles bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/ipoh-hor-fun.jpg" alt="Ipoh Hor Fun" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Imperial Ipoh Shredded Chicken Hor Fun</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Silky rice noodles in pristine chicken broth with golden prawn oil.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-12" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl|20">Small Bowl — MYR 20</option>
+                                <option value="Medium Bowl|24" selected>Medium Bowl — MYR 24</option>
+                                <option value="Large Bowl|28">Large Bowl — MYR 28</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-12', 'Imperial Ipoh Shredded Chicken Hor Fun')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card noodles bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/char-kway-teow.jpg" alt="Char Kway Teow" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Elite Charcoal Grilled Seafood Char Kway Teow</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">High-heat fried flat noodles featuring fresh squid and prawns.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-13" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl|24">Small Bowl — MYR 24</option>
+                                <option value="Medium Bowl|28" selected>Medium Bowl — MYR 28</option>
+                                <option value="Large Bowl|32">Large Bowl — MYR 32</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-13', 'Elite Charcoal Seafood Char Kway Teow')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card noodles bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/wonton-noodles.jpg" alt="Wonton Noodles" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Signature Wonton Noodles with Prawn Dumplings</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Springy egg noodles tossed in premium soy with handmade dumpling assets.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-14" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl|14">Small Bowl — MYR 14</option>
+                                <option value="Medium Bowl|18" selected>Medium Bowl — MYR 18</option>
+                                <option value="Large Bowl|22">Large Bowl — MYR 22</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-14', 'Signature Wonton Prawn Noodles')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card noodles bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/dry-curry-mee.jpg" alt="Dry Curry Mee" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Dry Curry Mee with Crispy Soft-Shell Crab</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Thick dry curry paste served with a crispy-fried premium crab asset.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-15" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl|28">Small Bowl — MYR 28</option>
+                                <option value="Medium Bowl|32" selected>Medium Bowl — MYR 32</option>
+                                <option value="Large Bowl|36">Large Bowl — MYR 36</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-15', 'Dry Curry Mee with Soft-Shell Crab')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card drinks bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/signature-coffee.jpg" alt="Signature Coffee" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Foodie Haven Signature Thick Coffee</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Slow-roasted heritage Robusta beans, masterfully pulled for maximum aroma.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT TEMPERATURE VARIANT:</label>
+                            <select id="option-item-16" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Hot Blend|6">Hot Blend — MYR 6</option>
+                                <option value="Iced Chilled Blend|7" selected>Iced Chilled Blend — MYR 7</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-16', 'Foodie Haven Signature Thick Coffee')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card drinks bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/matcha-latte.jpg" alt="Matcha Latte" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Premium Organic Uji Matcha Latte</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Ground Japanese Uji matcha whisked into steamed organic milk.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT TEMPERATURE VARIANT:</label>
+                            <select id="option-item-17" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Hot Premium|13">Hot Premium — MYR 13</option>
+                                <option value="Iced Premium|14" selected>Iced Premium — MYR 14</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-17', 'Premium Organic Uji Matcha Latte')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card drinks bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/cold-brew.jpg" alt="Cold Brew" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Heritage Estate Cold Brew Black Coffee</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">16-hour slow extracted premium Arabica beans, crisp and clear.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT VARIANT PARAMETERS:</label>
+                            <select id="option-item-18" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Bottled Iced Chilled|12" selected>Bottled Iced Chilled — MYR 12</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-18', 'Heritage Estate Cold Brew Black')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card drinks bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/calamansi-sparkler.jpg" alt="Calamansi Sparkler" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 mb-1 leading-tight">Imperial Calamansi & Wild Honey Sparkler</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Squeezed local calamansi limes balanced with raw wild honey lines.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT VARIANT PARAMETERS:</label>
+                            <select id="option-item-19" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Iced Sparkling Glass|9" selected>Iced Sparkling Glass — MYR 9</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-19', 'Imperial Calamansi Honey Sparkler')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item-card drinks bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between custom-card-hover">
+                    <img src="images/teochew-chendul.jpg" alt="Teochew Chendul" class="w-full h-40 object-cover">
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h2 class="text-base font-bold text-stone-900 leading-tight mb-1">Signature Gula Melaka Teochew Chendul</h2>
+                            <p class="text-stone-500 text-[11px] leading-relaxed">Shaved ice with pandan jelly and thick smoky organic Gula Melaka.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-50">
+                            <label class="block text-[10px] font-bold text-stone-400 tracking-wider mb-1">SELECT PORTION SIZE:</label>
+                            <select id="option-item-20" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                                <option value="Small Bowl Mini|10">Small Bowl Mini — MYR 10</option>
+                                <option value="Medium Bowl Standard|14" selected>Medium Bowl Standard — MYR 14</option>
+                                <option value="Large Bowl Imperial|18">Large Bowl Imperial — MYR 18</option>
+                            </select>
+                            <button onclick="executeAddToOrder('item-20', 'Signature Gula Melaka Teochew Chendul')" class="w-full mt-3 bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Add to Order Asset</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl border border-stone-200/80 p-6 shadow-md sticky top-28 flex flex-col gap-5 border-t-4 border-orange-500">
+                    <div class="border-b border-stone-100 pb-3 flex justify-between items-center">
+                        <h3 class="font-black text-stone-900 text-sm uppercase tracking-wider flex items-center gap-2">📋 Live Order Summary</h3>
+                        <span id="cartCountBadge" class="bg-red-955 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full">0 Items</span>
+                    </div>
+
+                    <div id="cartItemsList" class="space-y-3 max-h-[240px] overflow-y-auto pr-1 text-xs text-stone-400">
+                        <p class="text-center py-8 text-stone-400 font-medium italic">Your premium compilation rack is completely empty.</p>
+                    </div>
+
+                    <div class="border-t border-stone-100 pt-4 space-y-2 text-xs border-b border-stone-100 pb-4">
+                        <div class="flex justify-between text-stone-600 font-medium">
+                            <span>Subtotal (Items Total):</span>
+                            <span id="cartSubtotal">MYR 0.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-500">
+                            <span>Service Charge (10%):</span>
+                            <span id="cartServiceCharge">MYR 0.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-500">
+                            <span>Service Tax / SST (6%):</span>
+                            <span id="cartServiceTax">MYR 0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center font-black text-stone-950">
+                            <span class="text-xs uppercase tracking-wider">Grand Total (Incl. Taxes):</span>
+                            <span class="text-xl text-red-955" id="cartGrandTotal">MYR 0.00</span>
+                        </div>
+                        <button onclick="triggerVerificationModal()" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition shadow-md block text-center">
+                            Compile Order Parameters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="preferenceModal" class="fixed inset-0 bg-stone-950/80 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-stone-200 border-t-4 border-orange-600">
+            <div class="flex justify-between items-center border-b border-stone-100 pb-3 mb-5">
+                <h3 class="font-black text-stone-900 text-sm uppercase tracking-wider">🍽️ Order Finalization Context</h3>
+                <button onclick="dismissVerificationModal()" class="text-stone-400 hover:text-stone-600 font-bold text-sm">✕</button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black text-stone-700 uppercase tracking-wider mb-2">Dining Configuration:</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="border border-stone-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer bg-stone-50 hover:bg-stone-100 transition">
+                            <input type="radio" name="diningOption" value="Dine-in (Eat Inside Restaurant)" checked class="accent-orange-600">
+                            <span class="text-xs font-bold text-stone-800">Dine-in 堂食</span>
+                        </label>
+                        <label class="border border-stone-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer bg-stone-50 hover:bg-stone-100 transition">
+                            <input type="radio" name="diningOption" value="Takeaway (Pack Outside / Out)" class="accent-orange-600">
+                            <span class="text-xs font-bold text-stone-800">Takeaway 外带</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="paxQuantity" class="block text-xs font-black text-stone-700 uppercase tracking-wider mb-2">Number of Diners (几个人吃):</label>
+                    <input type="number" id="paxQuantity" min="1" value="2" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-800 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-100 grid grid-cols-2 gap-3">
+                <button onclick="dismissVerificationModal()" class="w-full bg-stone-100 hover:bg-stone-200 text-stone-600 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition">Cancel</button>
+                <button onclick="transmitOrderToWhatsApp()" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-md">Transmit to Concierge</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="globalFooterPlaceholder"></div>
+    <script src="script.js"></script>
+
+    <script>
+        let orderCartMatrix = [];
+
+        function switchCategory(category) {
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-stone-900', 'text-white', 'shadow-sm');
+                tab.classList.add('bg-stone-50', 'text-stone-600');
+            });
+            const activeTab = document.getElementById('tab-' + category);
+            if (activeTab) {
+                activeTab.classList.remove('bg-stone-50', 'text-stone-600');
+                activeTab.classList.add('bg-stone-900', 'text-white', 'shadow-sm');
+            }
+            const cards = document.querySelectorAll('.menu-item-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function executeAddToOrder(itemId, itemTitle) {
+            const selector = document.getElementById('option-' + itemId);
+            if (!selector) return;
+
+            const selectedValue = selector.value;
+            const tokenSplit = selectedValue.split('|');
+            const variantName = tokenSplit[0];
+            const variantPrice = parseFloat(tokenSplit[1]);
+
+            const matchingIndex = orderCartMatrix.findIndex(node => node.id === itemId && node.variant === variantName);
+            
+            if (matchingIndex > -1) {
+                orderCartMatrix[matchingIndex].quantity += 1;
+            } else {
+                orderCartMatrix.push({
+                    id: itemId,
+                    title: itemTitle,
+                    variant: variantName,
+                    price: variantPrice,
+                    quantity: 1
+                });
+            }
+            renderOrderCompilationRack();
+        }
+
+        function removeAssetRow(index) {
+            orderCartMatrix.splice(index, 1);
+            renderOrderCompilationRack();
+        }
+
+        // Advanced Multi-Tier Tax & Service Charge Calculation Matrix Engine
+        function renderOrderCompilationRack() {
+            const listNode = document.getElementById('cartItemsList');
+            const subtotalNode = document.getElementById('cartSubtotal');
+            const serviceChargeNode = document.getElementById('cartServiceCharge');
+            const serviceTaxNode = document.getElementById('cartServiceTax');
+            const grandTotalNode = document.getElementById('cartGrandTotal');
+            const countNode = document.getElementById('cartCountBadge');
+            
+            if (orderCartMatrix.length === 0) {
+                listNode.innerHTML = `<p class="text-center py-8 text-stone-400 font-medium italic">Your premium compilation rack is completely empty.</p>`;
+                subtotalNode.innerText = 'MYR 0.00';
+                serviceChargeNode.innerText = 'MYR 0.00';
+                serviceTaxNode.innerText = 'MYR 0.00';
+                grandTotalNode.innerText = 'MYR 0.00';
+                countNode.innerText = '0 Items';
+                return;
+            }
+
+            let computedSubtotal = 0;
+            let combinedItemCount = 0;
+            let dynamicHtml = '';
+
+            orderCartMatrix.forEach((item, index) => {
+                const itemRowTotal = item.price * item.quantity;
+                computedSubtotal += itemRowTotal;
+                combinedItemCount += item.quantity;
+
+                dynamicHtml += `
+                    <div class="bg-stone-50 border border-stone-200/60 p-3 rounded-xl flex justify-between items-start gap-2 animate-fade-in">
+                        <div class="space-y-0.5">
+                            <h4 class="font-bold text-stone-900 leading-snug">${item.title}</h4>
+                            <p class="text-[10px] text-orange-700 font-bold uppercase tracking-wider">${item.variant} <span class="text-stone-400">x${item.quantity}</span></p>
+                        </div>
+                        <div class="flex flex-col items-end gap-1 shrink-0">
+                            <span class="font-bold text-stone-900">MYR ${itemRowTotal.toFixed(2)}</span>
+                            <button onclick="removeAssetRow(${index})" class="text-[10px] text-red-600 hover:underline tracking-tight">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Standard Corporate Financial Formula Calculations
+            let serviceCharge = computedSubtotal * 0.10;
+            let serviceTax = computedSubtotal * 0.06;
+            let grandTotal = computedSubtotal + serviceCharge + serviceTax;
+
+            listNode.innerHTML = dynamicHtml;
+            subtotalNode.innerText = `MYR ${computedSubtotal.toFixed(2)}`;
+            serviceChargeNode.innerText = `MYR ${serviceCharge.toFixed(2)}`;
+            serviceTaxNode.innerText = `MYR ${serviceTax.toFixed(2)}`;
+            grandTotalNode.innerText = `MYR ${grandTotal.toFixed(2)}`;
+            countNode.innerText = `${combinedItemCount} Item${combinedItemCount > 1 ? 's' : ''}`;
+        }
+
+        function triggerVerificationModal() {
+            if (orderCartMatrix.length === 0) {
+                alert("Your configuration list is empty. Please add items before final compiling.");
+                return;
+            }
+            document.getElementById('preferenceModal').classList.remove('hidden');
+        }
+
+        function dismissVerificationModal() {
+            document.getElementById('preferenceModal').classList.add('hidden');
+        }
+
+        // Encodes and Transmits Full Financial Breakdown Data Segments directly via API
+        function transmitOrderToWhatsApp() {
+            const paxInput = document.getElementById('paxQuantity');
+            const paxCount = parseInt(paxInput.value) || 1;
+            const diningPreference = document.querySelector('input[name="diningOption"]:checked').value;
+
+            let payloadText = `*FOODIE HAVEN — LUXURY DINING MANIFEST*\n`;
+            payloadText += `==================================\n`;
+            payloadText += `*Dining Mode:* ${diningPreference}\n`;
+            payloadText += `*Total Guests:* ${paxCount} Pax\n`;
+            payloadText += `==================================\n\n`;
+            payloadText += `*ORDER ITEM DETAIL BREAKDOWN:*\n`;
+
+            let computedSubtotal = 0;
+            orderCartMatrix.forEach((item, idx) => {
+                const rowSum = item.price * item.quantity;
+                computedSubtotal += rowSum;
+                payloadText += `${idx + 1}. ${item.title}\n`;
+                payloadText += `   [Specification]: ${item.variant}\n`;
+                payloadText += `   [Quantity]: ${item.quantity}x -> *MYR ${rowSum.toFixed(2)}*\n\n`;
+            });
+
+            let serviceCharge = computedSubtotal * 0.10;
+            let serviceTax = computedSubtotal * 0.06;
+            let grandTotal = computedSubtotal + serviceCharge + serviceTax;
+
+            payloadText += `----------------------------------\n`;
+            payloadText += `*Subtotal:* MYR ${computedSubtotal.toFixed(2)}\n`;
+            payloadText += `*Service Charge (10%):* MYR ${serviceCharge.toFixed(2)}\n`;
+            payloadText += `*Service Tax / SST (6%):* MYR ${serviceTax.toFixed(2)}\n`;
+            payloadText += `*GRAND TOTAL (INCL. TAXES): MYR ${grandTotal.toFixed(2)}*\n`;
+            payloadText += `----------------------------------\n\n`;
+            payloadText += `_Please synchronize this invoice dataset to organize my mansion tables or fleet allocation parameters immediate._`;
+
+            dismissVerificationModal();
+            const encryptedUrlString = encodeURIComponent(payloadText);
+            window.open(`https://wa.me/601111063448?text=${encryptedUrlString}`, '_blank');
+        }
+    </script>
+</body>
+</html>

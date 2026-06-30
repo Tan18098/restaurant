@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-50 p-6 md:p-10">
+    <article class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm overflow-hidden">
+        <img src="images/gala-event.jpg" class="w-full h-64 object-cover">
+        <div class="p-10">
+            <h1 class="text-3xl font-black mb-4">Botanical Nanyang Gala</h1>
+            <p class="text-stone-600 mb-6">Select your preferred date for an executive dining experience.</p>
+            
+            <form id="resForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <input class="border p-3 rounded-lg" placeholder="Full Name" required>
+                <input class="border p-3 rounded-lg" type="email" placeholder="Email Address" required>
+                
+                <input type="date" id="resDate" class="border p-3 rounded-lg col-span-2" required>
+                
+                <select class="border p-3 rounded-lg col-span-2">
+                    <option>Dinner Session (19:00 - 21:00)</option>
+                    <option>Late Night Session (21:00 - 23:00)</option>
+                </select>
+                
+                <button type="submit" class="bg-stone-900 text-white py-3 rounded-lg col-span-2 font-bold hover:bg-orange-600 transition">Confirm Booking</button>
+            </form>
+            
+            <a href="blog.html" class="text-orange-600 font-bold underline">← Return to Blog Spot</a>
+        </div>
+    </article>
+
+    <script>
+        // 自动设置日期选择器为今天，且禁止选择过去的日期
+        const dateInput = document.getElementById('resDate');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+        dateInput.min = today;
+    </script>
+</body>
+</html>

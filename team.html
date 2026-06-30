@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Haven - Executive Leadership Matrix</title>
+    <!-- Import Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link the External CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-orange-50 flex flex-col min-h-screen font-sans text-gray-800 relative">
+
+    <!-- Top Malaysian Dietary Status Bar -->
+    <div class="bg-red-955 text-white text-xs font-bold py-2.5 px-4 text-center tracking-widest uppercase shadow-sm">
+        🇲🇾 Pork-Free & Alcohol-Free Premium Dining | Muslim-Friendly Experience
+    </div>
+
+    <!-- Unified Navigation Bar with Luxury Branding -->
+    <nav class="bg-white shadow-md w-full sticky top-0 z-50 border-b-4 border-orange-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center py-4">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-stone-900 text-white flex items-center justify-center rounded-full font-bold text-xl group-hover:bg-orange-600 transition shadow-md">F&B</div>
+                <span class="text-2xl font-black text-red-950 tracking-tight">Foodie Haven</span>
+            </a>
+            <!-- Unified 10-Page Navigation Network -->
+            <div class="flex flex-wrap gap-5 text-sm font-bold mt-4 md:mt-0">
+                <a href="index.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-orange-500 transition pb-1">About Us</a>
+                <a href="menu.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Menu</a>
+                <a href="outlets.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Outlets</a>
+                <a href="contact.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Contact Us</a>
+                <a href="csr.html" class="text-gray-600 hover:text-orange-500 transition pb-1">CSR</a>
+                <!-- Active Page Indicator -->
+                <a href="team.html" class="text-orange-600 border-b-2 border-orange-600 pb-1">Our Team</a>
+                <a href="awards.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Awards</a>
+                <a href="blog.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Blog Spot</a>
+                <a href="gallery.html" class="text-gray-600 hover:text-orange-500 transition pb-1">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto px-4 py-16 text-center">
+        <div class="mb-16">
+            <h1 class="text-4xl font-black text-red-900 tracking-tight uppercase">Culinary Artisans & Executive Leadership</h1>
+            <p class="text-stone-400 uppercase tracking-widest text-xs">The Intellectual Capital Behind the Platform</p>
+        </div>
+        
+        <!-- Two-Column Executive Profile Grid -->
+        <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
+            
+            <!-- Leader 1: Executive Culinary Director -->
+            <div class="bg-white p-8 border border-gray-100 shadow-sm rounded-2xl w-full md:w-1/2 flex flex-col justify-between custom-card-hover">
+                <div>
+                    <!-- Added cursor-pointer and onclick token targeting lightbox dynamic array arrays -->
+                    <img src="images/team-director.jpg" alt="Executive Culinary Director" onclick="openProfileLightbox(this.src, 'Executive Culinary Director')" class="w-28 h-28 rounded-full mx-auto mb-5 object-cover shadow-md border-2 border-orange-500 cursor-pointer hover:opacity-90 transition">
+                    <h3 class="font-black text-xl text-gray-900 leading-tight">Executive Culinary Director</h3>
+                    <span class="bg-red-50 text-red-800 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mt-2 inline-block">Michelin Background Asset</span>
+                    <p class="text-stone-500 text-xs mt-4 leading-relaxed">
+                        Steering our global menu engineering roadmap with 15+ years of verified fine dining experience. Mastermind behind the flawless calibration of our 128-layer signature artisan pastry formulas.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-stone-50">
+                    <span class="text-[11px] text-stone-400 font-bold uppercase tracking-wider">Click portrait asset to amplify lines</span>
+                </div>
+            </div>
+
+            <!-- Leader 2: Chief Experience Officer -->
+            <div class="bg-white p-8 border border-gray-100 shadow-sm rounded-2xl w-full md:w-1/2 flex flex-col justify-between custom-card-hover">
+                <div>
+                    <img src="images/team-cxo.jpg" alt="Chief Experience Officer" onclick="openProfileLightbox(this.src, 'Chief Experience Officer')" class="w-28 h-28 rounded-full mx-auto mb-5 object-cover shadow-md border-2 border-orange-500 cursor-pointer hover:opacity-90 transition">
+                    <h3 class="font-black text-xl text-gray-900 leading-tight">Chief Experience Officer</h3>
+                    <span class="bg-stone-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mt-2 inline-block">Enterprise Operations Control</span>
+                    <p class="text-stone-500 text-xs mt-4 leading-relaxed">
+                        Systematizing cross-state logistics deployment and fine-tuning white-glove consumer touchpoints. Architect of the unified live-order tracking network and premium digital concierge pathways.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-stone-50">
+                    <span class="text-[11px] text-stone-400 font-bold uppercase tracking-wider">Click portrait asset to amplify lines</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- NEW: Pure JavaScript Interactivity Lightbox Pop-up Module Node Framework -->
+    <div id="portraitLightboxModal" onclick="closeProfileLightbox()" class="fixed inset-0 bg-stone-950/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 cursor-zoom-out animate-fade-in">
+        <div class="relative max-w-sm w-full bg-white p-3 rounded-2xl shadow-2xl border border-stone-800/20 cursor-default" onclick="event.stopPropagation()">
+            <button onclick="closeProfileLightbox()" class="absolute top-4 right-4 bg-stone-900 hover:bg-stone-800 text-white w-7 h-7 flex items-center justify-center rounded-full font-bold text-xs transition z-10 shadow-md">✕</button>
+            <img id="lightboxTargetImage" src="" alt="Amplified Asset View" class="w-full h-80 object-cover rounded-xl shadow-inner border border-stone-100">
+            <p id="lightboxTargetCaption" class="text-center font-black text-stone-900 text-xs uppercase tracking-wider mt-3 mb-1"></p>
+        </div>
+    </div>
+
+    <!-- Placeholder for JavaScript Dynamic Footer Injection -->
+    <div id="globalFooterPlaceholder"></div>
+
+    <!-- External Unified JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Core Lightbox Controller Scripts -->
+    <script>
+        function openProfileLightbox(imageSource, profileCaption) {
+            const modalNode = document.getElementById('portraitLightboxModal');
+            const imageNode = document.getElementById('lightboxTargetImage');
+            const captionNode = document.getElementById('lightboxTargetCaption');
+            
+            if (!modalNode || !imageNode || !captionNode) return;
+            
+            imageNode.src = imageSource;
+            captionNode.innerText = profileCaption;
+            modalNode.classList.remove('hidden');
+        }
+
+        function closeProfileLightbox() {
+            const modalNode = document.getElementById('portraitLightboxModal');
+            if (modalNode) {
+                modalNode.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
