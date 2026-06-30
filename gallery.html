@@ -1,502 +1,632 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visual Feast | Foodie Haven Gallery</title>
     <style>
-        /* Color Palette synchronized with homepage */
-        :root {
-            --bg-color: #fbf8f3;       /* Premium warm cream background */
-            --header-bg: #ffffff;      /* Clean white navbar background */
-            --primary-color: #1a2a3a;  /* Elegant deep blue */
-            --brand-maroon: #4a1212;   /* Logo maroon brand color */
-            --nav-orange: #f26522;     /* Active orange accent and buttons */
-            --text-muted: #7f8c8d;
-        }
+      /* Color Palette synchronized with homepage */
+      :root {
+        --bg-color: #fbf8f3; /* Premium warm cream background */
+        --header-bg: #ffffff; /* Clean white navbar background */
+        --primary-color: #1a2a3a; /* Elegant deep blue */
+        --brand-maroon: #4a1212; /* Logo maroon brand color */
+        --nav-orange: #f26522; /* Active orange accent and buttons */
+        --text-muted: #7f8c8d;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
 
-        body {
-            background-color: #ffffff; 
-            color: var(--primary-color);
-            overflow-x: hidden;
-        }
+      body {
+        background-color: #ffffff;
+        color: var(--primary-color);
+        overflow-x: hidden;
+      }
 
-        /* =================================================== */
-        /* 1. Top Announcement Bar                             */
-        /* =================================================== */
-        .top-announcement {
-            background-color: #fff6eb; 
-            color: #d47a45;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #f5ede0;
-        }
+      /* =================================================== */
+      /* 1. Top Announcement Bar                             */
+      /* =================================================== */
+      .top-announcement {
+        background-color: #fff6eb;
+        color: #d47a45;
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #f5ede0;
+      }
 
-        /* =================================================== */
-        /* 2. Global Navigation Header                         */
-        /* =================================================== */
-        .global-header {
-            background-color: var(--header-bg);
-            border-bottom: 5px solid var(--nav-orange); 
-            width: 100%;
-            position: relative;
-            z-index: 1000;
-        }
+      /* =================================================== */
+      /* 2. Global Navigation Header                         */
+      /* =================================================== */
+      .global-header {
+        background-color: var(--header-bg);
+        border-bottom: 5px solid var(--nav-orange);
+        width: 100%;
+        position: relative;
+        z-index: 1000;
+      }
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 40px;
+      }
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .fb-circle {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.1rem;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.5px;
+      }
+      .brand-name {
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: var(--brand-maroon);
+        letter-spacing: -0.5px;
+      }
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        align-items: center;
+      }
+      .nav-menu li a {
+        text-decoration: none;
+        color: #34495e;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 8px 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      .nav-menu li a:hover {
+        color: var(--nav-orange);
+      }
+      .nav-menu li a.active-page {
+        color: var(--nav-orange);
+      }
+      .nav-menu li a.active-page::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--nav-orange);
+      }
+
+      /* =================================================== */
+      /* 3. Gallery Inner Layout                             */
+      /* =================================================== */
+      .gallery-header {
+        text-align: center;
+        padding: 70px 20px 20px;
+      }
+      .gallery-header .brand {
+        font-size: 0.85rem;
+        letter-spacing: 4px;
+        color: var(--nav-orange);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+      .gallery-header h1 {
+        font-size: 2.8rem;
+        color: var(--primary-color);
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+      .gallery-header .divider {
+        width: 40px;
+        height: 2px;
+        background-color: var(--nav-orange);
+        margin: 20px auto;
+      }
+
+      /* Category Filter Navigation */
+      .category-nav {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 50px;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        background: none;
+        border: 1px solid #dcd3c4;
+        padding: 8px 24px;
+        font-size: 0.95rem;
+        border-radius: 30px;
+        cursor: pointer;
+        color: var(--primary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+      }
+
+      /* Modern CSS Masonry Layout */
+      .gallery-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+        column-count: 3;
+        column-gap: 24px;
+      }
+
+      .gallery-item {
+        background-color: #fff;
+        margin-bottom: 24px;
+        break-inside: avoid;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        position: relative;
+        cursor: pointer;
+        transition:
+          transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 0.4s ease;
+        display: block;
+      }
+      .gallery-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(26, 42, 58, 0.08);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.04);
+      }
+
+      /* Hover Overlay Styles */
+      .item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(26, 42, 58, 0.85) 0%,
+          rgba(26, 42, 58, 0) 100%
+        );
+        padding: 30px 20px 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .gallery-item:hover .item-overlay {
+        opacity: 1;
+      }
+      .item-overlay h3 {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+      .item-overlay p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* Responsive Breakpoints */
+      @media (max-width: 992px) {
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 22px 40px;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .fb-circle {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            letter-spacing: 0.5px;
+          padding: 15px 20px;
         }
         .brand-name {
-            font-size: 1.7rem;
-            font-weight: bold;
-            color: var(--brand-maroon);
-            letter-spacing: -0.5px;
+          font-size: 1.4rem;
         }
         .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
+          gap: 15px;
         }
-        .nav-menu li a {
-            text-decoration: none;
-            color: #34495e;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 8px 0;
-            position: relative;
-            transition: color 0.3s ease;
+        .gallery-container {
+          column-count: 2;
         }
-        .nav-menu li a:hover {
-            color: var(--nav-orange);
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
         }
-        .nav-menu li a.active-page {
-            color: var(--nav-orange);
-        }
-        .nav-menu li a.active-page::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--nav-orange);
-        }
-
-        /* =================================================== */
-        /* 3. Gallery Inner Layout                             */
-        /* =================================================== */
-        .gallery-header {
-            text-align: center;
-            padding: 70px 20px 20px;
-        }
-        .gallery-header .brand {
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--nav-orange);
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            font-weight: 700;
+        .gallery-container {
+          column-count: 1;
         }
         .gallery-header h1 {
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            font-weight: 300;
-            letter-spacing: 1px;
+          font-size: 2rem;
         }
-        .gallery-header .divider {
-            width: 40px;
-            height: 2px;
-            background-color: var(--nav-orange);
-            margin: 20px auto;
-        }
+      }
 
-        /* Category Filter Navigation */
-        .category-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
-            padding: 10px 20px;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            background: none;
-            border: 1px solid #dcd3c4;
-            padding: 8px 24px;
-            font-size: 0.95rem;
-            border-radius: 30px;
-            cursor: pointer;
-            color: var(--primary-color);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: #fff;
-        }
+      /* =================================================== */
+      /* 4. Luxury Cream Footer Banner                       */
+      /* =================================================== */
+      .cta-banner {
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        text-align: center;
+        padding: 90px 20px;
+        border-top: 1px solid #f2ede4;
+      }
+      .cta-banner h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        letter-spacing: 0.5px;
+        color: var(--primary-color);
+      }
+      .cta-banner p {
+        color: #5a6c7d;
+        margin-bottom: 40px;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .cta-btn {
+        padding: 14px 40px;
+        font-size: 1rem;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        letter-spacing: 0.5px;
+      }
+      .btn-primary {
+        background-color: var(--nav-orange);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(242, 101, 34, 0.25);
+      }
+      .btn-primary:hover {
+        background-color: #d44d0e;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(242, 101, 34, 0.35);
+      }
+      .btn-secondary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+      }
+      .btn-secondary:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+        transform: translateY(-2px);
+      }
 
-        /* Modern CSS Masonry Layout */
-        .gallery-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 20px 80px;
-            column-count: 3;
-            column-gap: 24px;
-        }
-
-        .gallery-item {
-            background-color: #fff;
-            margin-bottom: 24px;
-            break-inside: avoid;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-            display: block;
-        }
-        .gallery-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(26, 42, 58, 0.08);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.04);
-        }
-
-        /* Hover Overlay Styles */
-        .item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(26, 42, 58, 0.85) 0%, rgba(26, 42, 58, 0) 100%);
-            padding: 30px 20px 20px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .gallery-item:hover .item-overlay {
-            opacity: 1;
-        }
-        .item-overlay h3 {
-            color: #fff;
-            font-size: 1.15rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        .item-overlay p {
-            color: rgba(255,255,255,0.75);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .nav-container { padding: 15px 20px; }
-            .brand-name { font-size: 1.4rem; }
-            .nav-menu { gap: 15px; }
-            .gallery-container { column-count: 2; }
-        }
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .gallery-container { column-count: 1; }
-            .gallery-header h1 { font-size: 2rem; }
-        }
-
-        /* =================================================== */
-        /* 4. Luxury Cream Footer Banner                       */
-        /* =================================================== */
-        .cta-banner {
-            background-color: var(--bg-color); 
-            color: var(--primary-color);
-            text-align: center;
-            padding: 90px 20px;
-            border-top: 1px solid #f2ede4;
-        }
-        .cta-banner h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            color: var(--primary-color);
-        }
-        .cta-banner p {
-            color: #5a6c7d;
-            margin-bottom: 40px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .cta-btn {
-            padding: 14px 40px;
-            font-size: 1rem;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 8px; 
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            letter-spacing: 0.5px;
-        }
-        .btn-primary {
-            background-color: var(--nav-orange);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(242, 101, 34, 0.25);
-        }
-        .btn-primary:hover {
-            background-color: #d44d0e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(242, 101, 34, 0.35);
-        }
-        .btn-secondary {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        /* LIGHTBOX IMAGE弹窗结构 */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(13, 21, 29, 0.96);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-        .lightbox.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .lightbox img {
-            max-width: 90%;
-            max-height: 85%;
-            border-radius: 6px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: transform 0.4s ease;
-        }
-        .lightbox.active img {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: #fff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            user-select: none;
-        }
-        .lightbox-close:hover {
-            color: var(--nav-orange);
-        }
+      /* LIGHTBOX IMAGE弹窗结构 */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(13, 21, 29, 0.96);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 85%;
+        border-radius: 6px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        transform: scale(0.95);
+        transition: transform 0.4s ease;
+      }
+      .lightbox.active img {
+        transform: scale(1);
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        color: #fff;
+        font-size: 2.5rem;
+        cursor: pointer;
+        user-select: none;
+      }
+      .lightbox-close:hover {
+        color: var(--nav-orange);
+      }
     </style>
-</head>
-<body>
-    <nav class="global-header">
-        <div class="nav-container">
-            <div class="logo-area">
-                <div class="fb-circle">F&B</div>
-                <div class="brand-name">Foodie Haven</div>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="outlets.html">Outlets</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="csr.html">CSR</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="awards.html">Awards</a></li>
-                <li><a href="blog.html">Blog Spot</a></li>
-                <li><a href="gallery.html" class="active-page">Gallery</a></li>
-            </ul>
+  </head>
+  <body>
+    <nav
+      class="bg-white shadow-md w-full sticky top-0 z-50 border-b-4 border-orange-500"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center py-4"
+      >
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 bg-stone-900 text-white flex items-center justify-center rounded-full font-bold text-xl group-hover:bg-orange-600 transition shadow-md"
+          >
+            F&B
+          </div>
+          <span class="text-2xl font-black text-red-950 tracking-tight"
+            >Foodie Haven</span
+          >
+        </a>
+        <div class="flex flex-wrap gap-5 text-sm font-bold mt-4 md:mt-0">
+          <a
+            href="index.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >About Us</a
+          >
+          <a
+            href="menu.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Menu</a
+          >
+          <a
+            href="outlets.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Outlets</a
+          >
+          <a
+            href="contact.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Contact Us</a
+          >
+          <a
+            href="csr.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >CSR</a
+          >
+          <a
+            href="team.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Our Team</a
+          >
+          <a
+            href="awards.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Awards</a
+          >
+          <a
+            href="blog.html"
+            class="text-gray-600 hover:text-orange-500 transition pb-1"
+            >Blog Spot</a
+          >
+          <a
+            href="gallery.html"
+            class="text-orange-600 border-b-2 border-orange-600 pb-1"
+            >Gallery</a
+          >
         </div>
+      </div>
     </nav>
 
     <div class="gallery-header">
-        <div class="brand">Foodie Haven Est. 2026</div>
-        <h1>An Artistic Gallery of Taste & Vision</h1>
-        <div class="divider"></div>
+      <div class="brand">Foodie Haven Est. 2026</div>
+      <h1>An Artistic Gallery of Taste & Vision</h1>
+      <div class="divider"></div>
     </div>
 
     <div class="category-nav">
-        <button class="filter-btn active" onclick="filterGallery('all')">All Inspirations</button>
-        <button class="filter-btn" onclick="filterGallery('mains')">Crafted Mains</button>
-        <button class="filter-btn" onclick="filterGallery('noodles')">Traditional Noodles</button>
-        <button class="filter-btn" onclick="filterGallery('bakery')">Artisan Bakery</button>
-        <button class="filter-btn" onclick="filterGallery('drinks')">Signature Drinks</button>
+      <button class="filter-btn active" onclick="filterGallery('all')">
+        All Inspirations
+      </button>
+      <button class="filter-btn" onclick="filterGallery('mains')">
+        Crafted Mains
+      </button>
+      <button class="filter-btn" onclick="filterGallery('noodles')">
+        Traditional Noodles
+      </button>
+      <button class="filter-btn" onclick="filterGallery('bakery')">
+        Artisan Bakery
+      </button>
+      <button class="filter-btn" onclick="filterGallery('drinks')">
+        Signature Drinks
+      </button>
     </div>
 
     <div class="gallery-container">
-        <div class="gallery-item" data-category="bakery" onclick="openLightbox(this)">
-            <img src="images/kaya_toast.jpg" alt="Charcoal Kaya Toast">
-            <div class="item-overlay">
-                <h3>Charcoal Kaya Toast</h3>
-                <p>Food Artistry / Baking Aesthetics</p>
-            </div>
+      <div
+        class="gallery-item"
+        data-category="bakery"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/kaya_toast.jpg" alt="Charcoal Kaya Toast" />
+        <div class="item-overlay">
+          <h3>Charcoal Kaya Toast</h3>
+          <p>Food Artistry / Baking Aesthetics</p>
         </div>
-        <div class="gallery-item" data-category="mains" onclick="openLightbox(this)">
-            <img src="images/wagyu_beef.jpg" alt="Premium Wagyu Beef Rendang">
-            <div class="item-overlay">
-                <h3>Wagyu Beef Rendang</h3>
-                <p>Signature / Crafted Mains</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="mains"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/wagyu_beef.jpg" alt="Premium Wagyu Beef Rendang" />
+        <div class="item-overlay">
+          <h3>Wagyu Beef Rendang</h3>
+          <p>Signature / Crafted Mains</p>
         </div>
-        <div class="gallery-item" data-category="bakery" onclick="openLightbox(this)">
-            <img src="images/garlic_bun.jpg" alt="Garlic Cheese Bun">
-            <div class="item-overlay">
-                <h3>Roasted Garlic Bun</h3>
-                <p>Freshly Baked / Daily Oven</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="bakery"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/garlic_bun.jpg" alt="Garlic Cheese Bun" />
+        <div class="item-overlay">
+          <h3>Roasted Garlic Bun</h3>
+          <p>Freshly Baked / Daily Oven</p>
         </div>
-        <div class="gallery-item" data-category="mains" onclick="openLightbox(this)">
-            <img src="images/truffle_rice.jpg" alt="Wild Mushroom Truffle Rice">
-            <div class="item-overlay">
-                <h3>Wild Mushroom Truffle Rice</h3>
-                <p>Gastronomy / Premium Truffle</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="mains"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/truffle_rice.jpg" alt="Wild Mushroom Truffle Rice" />
+        <div class="item-overlay">
+          <h3>Wild Mushroom Truffle Rice</h3>
+          <p>Gastronomy / Premium Truffle</p>
         </div>
-        <div class="gallery-item" data-category="noodles" onclick="openLightbox(this)">
-            <img src="images/char_kway_teow.jpg" alt="Charcoal Grilled Char Kway Teow">
-            <div class="item-overlay">
-                <h3>Charcoal Char Kway Teow</h3>
-                <p>Wok Hei / Essence of the Wok</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="noodles"
+        onclick="openLightbox(this)"
+      >
+        <img
+          src="images/char_kway_teow.jpg"
+          alt="Charcoal Grilled Char Kway Teow"
+        />
+        <div class="item-overlay">
+          <h3>Charcoal Char Kway Teow</h3>
+          <p>Wok Hei / Essence of the Wok</p>
         </div>
-        <div class="gallery-item" data-category="drinks" onclick="openLightbox(this)">
-            <img src="images/calamansi_sparkler.jpg" alt="Imperial Calamansi Sparkler">
-            <div class="item-overlay">
-                <h3>Calamansi & Honey Sparkler</h3>
-                <p>Beverage / Summer Specials</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="drinks"
+        onclick="openLightbox(this)"
+      >
+        <img
+          src="images/calamansi_sparkler.jpg"
+          alt="Imperial Calamansi Sparkler"
+        />
+        <div class="item-overlay">
+          <h3>Calamansi & Honey Sparkler</h3>
+          <p>Beverage / Summer Specials</p>
         </div>
-        <div class="gallery-item" data-category="drinks" onclick="openLightbox(this)">
-            <img src="images/matcha_latte.jpg" alt="Uji Matcha Latte">
-            <div class="item-overlay">
-                <h3>Organic Uji Matcha Latte</h3>
-                <p>Zen / Essence of Uji</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="drinks"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/matcha_latte.jpg" alt="Uji Matcha Latte" />
+        <div class="item-overlay">
+          <h3>Organic Uji Matcha Latte</h3>
+          <p>Zen / Essence of Uji</p>
         </div>
-        <div class="gallery-item" data-category="drinks" onclick="openLightbox(this)">
-            <img src="images/cold_brew.jpg" alt="Cold Brew Black Coffee">
-            <div class="item-overlay">
-                <h3>Heritage Estate Cold Brew</h3>
-                <p>Slow Brew / Gift of Time</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="drinks"
+        onclick="openLightbox(this)"
+      >
+        <img src="images/cold_brew.jpg" alt="Cold Brew Black Coffee" />
+        <div class="item-overlay">
+          <h3>Heritage Estate Cold Brew</h3>
+          <p>Slow Brew / Gift of Time</p>
         </div>
-        <div class="gallery-item" data-category="noodles" onclick="openLightbox(this)">
-            <img src="images/ipoh_hor_fun.jpg" alt="Ipoh Shredded Chicken Hor Fun">
-            <div class="item-overlay">
-                <h3>Imperial Ipoh Hor Fun</h3>
-                <p>Heritage / Homage to Tradition</p>
-            </div>
+      </div>
+      <div
+        class="gallery-item"
+        data-category="noodles"
+        onclick="openLightbox(this)"
+      >
+        <img
+          src="images/ipoh_hor_fun.jpg"
+          alt="Ipoh Shredded Chicken Hor Fun"
+        />
+        <div class="item-overlay">
+          <h3>Imperial Ipoh Hor Fun</h3>
+          <p>Heritage / Homage to Tradition</p>
         </div>
+      </div>
     </div>
 
     <div class="cta-banner">
-        <h2>Craving a taste? Culinary perfection is just a click away.</h2>
-        <p>Translate visual desire into an unforgettable sensory reality.</p>
-        <div class="cta-buttons">
-            <a href="menu.html" class="cta-btn btn-primary">Browse Full Menu</a>
-            <a href="contact.html" class="cta-btn btn-secondary">Reserve a Table</a>
-        </div>
+      <h2>Craving a taste? Culinary perfection is just a click away.</h2>
+      <p>Translate visual desire into an unforgettable sensory reality.</p>
+      <div class="cta-buttons">
+        <a href="menu.html" class="cta-btn btn-primary">Browse Full Menu</a>
+        <a href="contact.html" class="cta-btn btn-secondary">Reserve a Table</a>
+      </div>
     </div>
 
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img src="" id="lightboxImg" alt="Enlarged view">
+      <span class="lightbox-close">&times;</span>
+      <img src="" id="lightboxImg" alt="Enlarged view" />
     </div>
 
     <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
 
-        // Gallery filter logic
-        function filterGallery(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+      // Gallery filter logic
+      function filterGallery(category) {
+        const buttons = document.querySelectorAll(".filter-btn");
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
 
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+        const items = document.querySelectorAll(".gallery-item");
+        items.forEach((item) => {
+          if (
+            category === "all" ||
+            item.getAttribute("data-category") === category
+          ) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
 
-        // Lightbox trigger logic
-        function openLightbox(item) {
-            const imgSrc = item.querySelector('img').src;
-            lightboxImg.src = imgSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+      // Lightbox trigger logic
+      function openLightbox(item) {
+        const imgSrc = item.querySelector("img").src;
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
 
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
     </script>
-</body>
+  </body>
 </html>
